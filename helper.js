@@ -1,9 +1,7 @@
 const request = require("request");
 const chalk = require("chalk");
 
-const getWeather = country => {
-  console.log("Showing weather");
-};
+const getWeather = country => {};
 
 const getNews = country => {
   const url = `https://newsapi.org/v2/top-headlines?pagesize=10&country=${country}&apiKey=c0a3992f469a42e1a0533456c6dd4919`;
