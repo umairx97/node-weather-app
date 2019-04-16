@@ -62,7 +62,7 @@ const getWeather = cityKey => {
 };
 
 // Returns a key for a specific city to get the country
-getCity = city => {
+getData = city => {
   if (!city) {
     console.log(chalk.bgRed("Please Enter A City Name"));
   } else {
@@ -78,4 +78,4 @@ getCity = city => {
   }
 };
 
-getCity(city);
+getData(city);
