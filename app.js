@@ -1,8 +1,6 @@
 const request = require("request");
 const chalk = require("chalk");
 const city = process.argv[2];
-const ip = require("ip");
-const publicIp = require("public-ip");
 const axios = require("axios");
 
 // const oldKey = 'san4GqjWsND0tGapYRWyB1knt8XtgkgP'
@@ -73,7 +71,6 @@ getData = city => {
       const a = res.data.city;
       getData(a);
     });
-    
   } else {
     const url = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=san4GqjWsND0tGapYRWyB1knt8XtgkgP&q=${city}`;
     request(url, (error, response, body) => {
