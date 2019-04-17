@@ -17,11 +17,15 @@
   },
   "homepage": "https://github.com/umairx97/node-weather-app#readme",
   "dependencies": {
+    "address": "^1.0.3",
     "axios": "^0.18.0",
     "chalk": "^2.4.2",
     "figlet": "^1.2.1",
-    "inquirer": "^6.3.1",
+    "get-my-ip": "0.0.1",
+    "ip": "^1.1.5",
+    "public-ip": "^3.0.0",
     "request": "^2.88.0",
+    "request-ip": "^2.1.3",
     "validator": "^10.11.0",
     "yargs": "^13.2.2"
   }

@@ -1,6 +1,10 @@
 const request = require("request");
 const chalk = require("chalk");
 const city = process.argv[2];
+const ip = require("ip");
+const publicIp = require("public-ip");
+const axios = require("axios");
+
 // const oldKey = 'san4GqjWsND0tGapYRWyB1knt8XtgkgP'
 // const newKey = "IkctBCdqSDrUh33Pz0eOwfhxBTknTaAV"
 
@@ -21,7 +25,7 @@ const getNews = countryId => {
 
 // Returns the country name and province based on city key provided
 const getCountry = cityKey => {
-  const url = `http://dataservice.accuweather.com/locations/v1/${cityKey}?apikey=IkctBCdqSDrUh33Pz0eOwfhxBTknTaAV`;
+  const url = `http://dataservice.accuweather.com/locations/v1/${cityKey}?apikey=san4GqjWsND0tGapYRWyB1knt8XtgkgP`;
   request(url, (err, res, body) => {
     const info = JSON.parse(body);
     console.log("\t \t \t " + chalk.cyan.bold("Region:"));
@@ -37,7 +41,7 @@ const getCountry = cityKey => {
 
 // Returns the weather against a city key
 const getWeather = cityKey => {
-  const url = `http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityKey}?apikey=IkctBCdqSDrUh33Pz0eOwfhxBTknTaAV&metric=true`;
+  const url = `http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityKey}?apikey=san4GqjWsND0tGapYRWyB1knt8XtgkgP&metric=true`;
 
   request(url, (error, response, body) => {
     const info = JSON.parse(body);
@@ -64,9 +68,14 @@ const getWeather = cityKey => {
 // Returns a key for a specific city to get the country
 getData = city => {
   if (!city) {
-    console.log(chalk.bgRed("Please Enter A City Name"));
+    console.log(chalk.bgRed("Finding Information by location"));
+    axios.get("https://ipapi.co/json").then(res => {
+      const a = res.data.city;
+      getData(a);
+    });
+    
   } else {
-    const url = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=IkctBCdqSDrUh33Pz0eOwfhxBTknTaAV&q=${city}`;
+    const url = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=san4GqjWsND0tGapYRWyB1knt8XtgkgP&q=${city}`;
     request(url, (error, response, body) => {
       const data = JSON.parse(body);
       for (let i = 0; i < data.length; i++) {
